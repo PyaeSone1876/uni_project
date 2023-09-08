@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>User Options</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
 body
 {
-    background: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-    background-size:100% 100%;
-    
+    background:skyblue;
 }
 
 
@@ -46,9 +43,9 @@ a
 
         #buttons
         {
-          
+           
             height:1rem;
-            padding:0.5rem 1rem 0.5rem 1rem;
+            padding:0.5rem 3rem 0.5rem 3rem;
             background-color: black;
             color:white;
             border: none;
@@ -69,7 +66,19 @@ a
 
         .schname
         {
+            color:red;
+        }
+
+        .logo
+        {
+            font-size:70px;
             color:orange;
+        }
+
+
+        .container
+        {
+            text-align:center;
         }
 
 
@@ -77,13 +86,17 @@ a
     </style>
 </head>
 <body>
-<h1 class="title">Welcome to <span class="schname">'Phoenix'</span> English Private School</h1>
+
+<h1 class="title"><br>
+<i class="fa-brands fa-phoenix-framework logo"></i>
+<br><br>
+Welcome to <span class="schname">'Phoenix'</span> English Private School</h1>
 <br><br><br>
 <div class="container">
 <div class="panel">
-<h1>Choose User</h1>
+<h2>Choose User:</h2>
     <a href="../admin/dashboard.php" class="admin" id="buttons">Admin</a>
-    <br><br>
+    <br><br><br>
     <a href="../student/enrollmentForm.php" class="student" id="buttons">Student</a>
 </div>
 </div>
