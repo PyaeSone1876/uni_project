@@ -212,74 +212,32 @@ else
         word-wrap: break-word;
         }
 
-        @media (max-width:1035px) {
+    /* iPad Air */
+@media (max-width:821px)  
+{
+    header
+    {
+        margin-left:5px;
+    }
+   nav li a
+   {
+    font-size:15px;
+    margin-bottom:100px;
+   }
 
-        header
-        {
-            padding-right:40rem;
-        }
+   nav li 
+   {
+    margin-top:10px;
+   }
+   
+   nav 
+   {
+    width:150px;
+   }
 
    
-          nav li a
-          {
-            font-size:12px;
-          }
+}
 
-          td
-          {
-            font-size:12px;
-          }
-
-          #edit
-        {
-            margin-left:10px;
-            height:1rem;
-            padding:0.25rem 0.5rem 0.25rem 0.5rem;
-            background-color: black;
-            color:white;
-            border: none;
-            border-radius: 5px; 
-        }
-
-        #edit:hover {
-            background-color: white;
-            color:black;
-            border: none;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        #delete
-        {
-            margin-left:10px;
-            height:1rem;
-            padding:0.25rem 0.5rem 0.25rem 0.5rem;
-            background-color: black;
-            color:white;
-            border: none;
-            border-radius: 5px;
-        }
-
-        #delete:hover {
-            background-color: white;
-            color:black;
-            border: none;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        }
-
-
-        }
-
-        @media screen and (min-width: 1024px) {
-            header,
-            nav,
-            main,
-            footer {
-                padding: 30px;
-            }
-        }
-    
-
-        
     </style>
 </head>
 <body>

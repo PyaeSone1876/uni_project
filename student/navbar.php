@@ -3,7 +3,7 @@
     .logo
     {
         font-size:25px;
-        color:orange;
+        color:red;
     }
 
     .brand

@@ -145,85 +145,28 @@ if (!isset($_SESSION['id'])) {
 /* iPad Air */
 @media (max-width:821px)  
 {
-   nav li a
-   {
-    font-size:15px;
-    margin-bottom:100px;
-   }
-
-   nav li 
-   {
-    margin-top:10px;
-   }
-   
-   nav 
-   {
-    width:150px;
-   }
-
-   .updatestudent-form
-   {
-    margin-left:95px;
-    height:900px;
-   }
-
-
-   form input[type='text']
-   {
-    margin-bottom:60px;
-   }
-
-
-}
-
-/* iPad Mini */
-@media (max-width:769px)  
-{
-   header
-   {
-     margin-left:15px;
-   }
-   nav li a
-   {
-    font-size:15px;
-    margin-bottom:100px;
-   }
-
-   nav li 
-   {
-    margin-top:10px;
-   }
-   
-   nav 
-   {
-    width:150px;
-   }
-
-   .updatestudent-form
-   {
-    margin-left:80px;
-    height:900px;
-   }
-
-   form input[type='text']
-   {
-    margin-bottom:60px;
-   }
-
-
-
-
-}
-@media screen and (min-width: 1024px) {
-    header,
-    nav,
-    main,
-    footer {
-        padding: 30px;
+    header
+    {
+        margin-left:5px;
     }
+   nav li a
+   {
+    font-size:15px;
+    margin-bottom:100px;
+   }
+
+   nav li 
+   {
+    margin-top:10px;
+   }
+   
+   nav 
+   {
+    width:150px;
+   }
+
+   
 }
-
-
     </style>
 </head>
 <body>

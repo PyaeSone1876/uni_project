@@ -20,24 +20,27 @@ if($password !== $confirmpassword){
     
     echo "<script>
     alert('Password does not match');
-    location.href = '../admin/insertStudents.php';
+    location.href = '../admin/insertStudent.php';
     </Script>";
      
 }
-        // insert query 
+       else
+       {
+         // insert query 
 
-        $insert_new_register = "INSERT INTO student (username,email,address,phoneno,password) VALUES ('$username','$email','$address','$phonenumber','$password')";
+         $insert_new_register = "INSERT INTO student (username,email,address,phoneno,password) VALUES ('$username','$email','$address','$phonenumber','$password')";
 
 
-        // use connection to insert the data into the database
-        $conn->query($insert_new_register);
-      
-
-        // show the status
-        echo "<script>
-        alert('Successfully student is registered');
-        location.href = '../admin/viewStudents.php';
-        </Script>";
+         // use connection to insert the data into the database
+         $conn->query($insert_new_register);
+       
+ 
+         // show the status
+         echo "<script>
+         alert('Successfully student is registered');
+         location.href = '../admin/viewStudents.php';
+         </Script>";
+       }
 
     }
 

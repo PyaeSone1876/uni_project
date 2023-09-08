@@ -119,10 +119,10 @@ body
         margin-left:125px;
     }
 
-    .container
+    /* .container
     {
         margin-bottom:300px;
-    }
+    } */
 
 
 

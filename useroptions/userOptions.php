@@ -3,102 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Options</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Choose User Type</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Add Font Awesome for the logo -->
     <style>
-body
-{
-    background:skyblue;
-}
-
-
-a
-{
-    text-decoration:none;
-}
-
-.panel
-{
-    width:500px;
-    height:1000px;
-    background:wheat;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    width:300px;
-    height:300px;
-    padding-top:100px;
-    border-radius:50px;
-    text-align:center;
-    margin-left:480px;
-}
-
-.title
-{
-    text-align:center;
-
-}
-
-
-
-
-
-        #buttons
-        {
-           
-            height:1rem;
-            padding:0.5rem 3rem 0.5rem 3rem;
-            background-color: black;
-            color:white;
-            border: none;
-            border-radius: 5px;
+        body {
+            background-color: skyblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Center items vertically */
+            height: 100vh;
+            margin: 0;
         }
 
-        #buttons:hover {
+        .logo {
+            font-size: 48px; /* Adjust the size as needed */
+            color:red; /* Set the color to red */
+        }
+
+        .welcome-text {
+            font-size: 30px; /* Adjust the size as needed */
+            margin: 20px 0; /* Add margin for spacing */
+        }
+
+        .panel-container {
+            text-align: center;
+        }
+
+        .panel {
+            background-color: grey;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            margin-top: 20px; /* Add margin to separate the title and panel */
+        }
+
+        .link {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .link:hover {
             background-color: white;
-            color:black;
+            color: black;
             border: none;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .title
-        {
-            color:black;
+        @media (max-width: 768px) {
+            .panel {
+                max-width: 100%;
+            }
         }
-
-        .schname
-        {
-            color:red;
-        }
-
-        .logo
-        {
-            font-size:70px;
-            color:orange;
-        }
-
-
-        .container
-        {
-            text-align:center;
-        }
-
-
-
     </style>
 </head>
 <body>
-
-<h1 class="title"><br>
-<i class="fa-brands fa-phoenix-framework logo"></i>
-<br><br>
-Welcome to <span class="schname">'Phoenix'</span> English Private School</h1>
-<br><br><br>
-<div class="container">
-<div class="panel">
-<h2>Choose User:</h2>
-    <a href="../admin/dashboard.php" class="admin" id="buttons">Admin</a>
-    <br><br><br>
-    <a href="../student/enrollmentForm.php" class="student" id="buttons">Student</a>
-</div>
-</div>
+    <div class="logo">
+        <i class="fab fa-phoenix-framework"></i>
+    </div>
+    <div class="welcome-text">
+        Welcome to Phoenix English Private School
+    </div>
+    <div class="panel-container">
+        <h2>Choose User Type:</h2>
+        <div class="panel">
+            <a href="../admin/dashboard.php" class="link">Admin</a>
+            <a href="../student/enrollmentForm.php" class="link">Student</a>
+        </div>
+    </div>
 </body>
 </html>

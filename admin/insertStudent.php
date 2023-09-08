@@ -120,6 +120,10 @@ if (!isset($_SESSION['id'])) {
        /* iPad Air */
 @media (max-width:821px)  
 {
+    header
+    {
+        margin-left:5px;
+    }
    nav li a
    {
     font-size:15px;
@@ -166,65 +170,6 @@ if (!isset($_SESSION['id'])) {
 
 }
 
-/* iPad Mini */
-@media (max-width:769px)  
-{
-   header
-   {
-     margin-left:15px;
-   }
-   nav li a
-   {
-    font-size:15px;
-    margin-bottom:100px;
-   }
-
-   nav li 
-   {
-    margin-top:10px;
-   }
-   
-   nav 
-   {
-    width:150px;
-   }
-
-   .addstudent-form
-   {
-    margin-left:80px;
-    height:995px;
-   }
-
-   .attributes
-   {
-    background:red;
-    
-   }
-
-   form input[type='text']
-   {
-    margin-bottom:55px;
-   }
-
-   form input[type='file']
-   {
-    margin-bottom:55px;
-   }
-
-   form input[type='password']
-   {
-    margin-bottom:50px;
-   }
-
-}
-@media screen and (min-width: 1024px) {
-    header,
-    nav,
-    main,
-    footer {
-        padding: 30px;
-    }
-}
     </style>
 </head>
 <body>

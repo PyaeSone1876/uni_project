@@ -129,121 +129,31 @@ body {
             padding: 10px;
             grid-area: footer;
         }
-   /* iPad Air */
-@media (max-width:821px)  
+  /* iPad Air */
+ @media (max-width:821px)  
 {
-   header
-   {
-    margin-left:5px;
-   }
-   nav li a
-   {
-    font-size:15px;
-    margin-bottom:100px;
-   }
-
-   nav li 
-   {
-    margin-top:10px;
-   }
-   
-   nav 
-   {
-    width:150px;
-   }
-
-   .courseupdate-form
-   {
-    margin-left:95px;
-    height:900px;
-   }
-
-   .attributes
-   {
-    background:red;
-    
-   }
-
-   form input[type='text']
-   {
-    margin-bottom:70px;
-   }
-
-   form input[type='file']
-   {
-    margin-bottom:70px;
-   }
-
-   form select
-   {
-    margin-bottom:50px;
-   }
-
-
-}
-
-/* iPad Mini */
-@media (max-width:769px)  
-{
-   header
-   {
-     margin-left:17px;
-   }
-   nav li a
-   {
-    font-size:15px;
-    margin-bottom:100px;
-   }
-
-   nav li 
-   {
-    margin-top:10px;
-   }
-   
-   nav 
-   {
-    width:150px;
-   }
-
-   .courseupdate-form
-   {
-    margin-left:80px;
-    height:900px;
-   }
-
-   .attributes
-   {
-    background:red;
-    
-   }
-
-   form input[type='text']
-   {
-    margin-bottom:70px;
-   }
-
-   form input[type='file']
-   {
-    margin-bottom:70px;
-   }
-
-   form select
-   {
-    margin-bottom:50px;
-   }
-
-
-}
-@media screen and (min-width: 1024px) {
-    header,
-    nav,
-    main,
-    footer {
-        padding: 30px;
+    header
+    {
+        margin-left:5px;
     }
-}
+   nav li a
+   {
+    font-size:15px;
+    margin-bottom:100px;
+   }
 
-    
+   nav li 
+   {
+    margin-top:10px;
+   }
+   
+   nav 
+   {
+    width:150px;
+   }
+
+   
+}
     </style>
 </head>
 <body>

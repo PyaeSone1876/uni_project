@@ -151,28 +151,33 @@ GROUP BY enrollment_year";
             border-radius:10px;
         }
 
-        @media (max-width:1035px) {
-
-header
+       
+ /* iPad Air */
+ @media (max-width:821px)  
 {
-    padding-right:40rem;
+    header
+    {
+        margin-left:5px;
+    }
+   nav li a
+   {
+    font-size:15px;
+    margin-bottom:100px;
+   }
+
+   nav li 
+   {
+    margin-top:10px;
+   }
+   
+   nav 
+   {
+    width:150px;
+   }
+
+  
 }
 
-
-nav li a
-{
-   font-size:12px;
-}
-}
-
-@media screen and (min-width: 1024px) {
-header,
-nav,
-main,
-footer {
-padding: 30px;
-}
-}
     </style>
 </head>
 <body>
@@ -208,7 +213,7 @@ padding: 30px;
         <div class="card2">
         <div class="carddata">
         <?php echo $fetch2['total_student']?>
-        <i class="fa-solid fa-screwdriver-wrench box-icon"></i>
+        <i class="fa-solid fa-user"></i>
         <br><br>
         Students
         </div>
@@ -222,7 +227,7 @@ padding: 30px;
         <div class="card3">
         <div class="carddata">
         <?php echo $fetch3['total_course']?>
-        <i class="fa-solid fa-screwdriver-wrench box-icon"></i>
+        <i class="fa-solid fa-book"></i>
         <br><br>
         Courses
         </div>
@@ -236,7 +241,7 @@ padding: 30px;
         <div class="card4">
         <div class="carddata">
         <?php echo $fetch4['total_enrollment']?>
-        <i class="fa-solid fa-screwdriver-wrench box-icon"></i>
+        <i class="fa-solid fa-rectangle-list"></i>
         <br><br>
         Enrollments
         </div>

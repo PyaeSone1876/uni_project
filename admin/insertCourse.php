@@ -130,34 +130,30 @@ if (!isset($_SESSION['id'])) {
             height:35px;
         }
 
-        @media (max-width:1035px) {
-
-        header
-        {
-            padding-right:40rem;
-        }
-
-        nav li a
-        {
-            font-size:12px;
-        }
-
-        td
-        {
-            font-size:12px;
-        }
-
-
-
-}
-
-@media screen and (min-width: 1024px) {
-    header,
-    nav,
-    main,
-    footer {
-        padding: 30px;
+       /* iPad Air */
+ @media (max-width:821px)  
+{
+    header
+    {
+        margin-left:5px;
     }
+   nav li a
+   {
+    font-size:15px;
+    margin-bottom:100px;
+   }
+
+   nav li 
+   {
+    margin-top:10px;
+   }
+   
+   nav 
+   {
+    width:150px;
+   }
+
+   
 }
     </style>
 </head>
