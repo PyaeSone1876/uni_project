@@ -28,8 +28,19 @@ else
     $sname="";
     if(isset($_POST["btnsearch"]))
 {
-    $scourse=$_POST['search'];
-    $sql="SELECT * FROM student where name like '%$sname%'";
+    $sname=$_POST['search'];
+    $sql= "SELECT 
+    c.name AS course_name,
+    c.class AS class_name,
+    e.id AS enrollment_id,
+    e.enrollment_date,
+    s.username AS student_name
+    FROM 
+    enrollment e
+    JOIN 
+    course c ON e.course_id = c.id
+    JOIN 
+    student s ON e.student_id = s.id where s.username like '%$sname%'";
     $results= $conn->query($sql);
 }
 ?>
