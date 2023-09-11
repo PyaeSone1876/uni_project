@@ -53,6 +53,12 @@
             border-radius:5px;
        }
 
+       .navlogo:hover
+   {
+       cursor:pointer;
+       background:none;
+   }
+
        .navbar
        {
         border-radius:10px;
@@ -73,13 +79,15 @@
 
    .nav-links li a
    {
-    font-size:10px;
+    font-size:20px;
    }
 
    .navbar
    {
      width:815px;
    }
+
+
 
 }
        
@@ -88,8 +96,8 @@
 </style>
 <nav class="navbar">
         <ul class="nav-links">
-            <div class="bitems"><i class="fa-brands fa-phoenix-framework logo"></i><p class="brand">Phoenix</p></div>
-            <li><a href="enrollmentInformation.php">Enrollment Information</a></li>
+            <div class="bitems"><a href="homepage.php" class="navlogo"><i class="fa-brands fa-phoenix-framework logo"></i></a><p class="brand">Phoenix</p></div>
+            <li><a href="homepage.php">Home</a></li>
             <li><a href="enrollmentForm.php">Enrollment</a></li>
             <li><a href="contact.php">Contact</a></li>
             <li><a href="aboutUs.php">About us</a></li>

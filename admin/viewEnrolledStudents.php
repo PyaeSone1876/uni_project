@@ -82,8 +82,10 @@ if(isset($_POST["btnsearch"]))
         header {
             background-color: #333;
             color: #fff;
-            width:100%;
-            padding: 10px;
+            width:640px;
+            padding-top: 10px;
+            padding-bottom:10px;
+            padding-left:10px;
             grid-area: header;
         }
 

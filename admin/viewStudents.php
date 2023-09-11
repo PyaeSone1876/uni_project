@@ -55,7 +55,9 @@ else
         header {
             background-color: #333;
             color: #fff;
-            padding: 10px;
+            padding-top: 10px;
+            padding-bottom:10px;
+            padding-left:10px;
             grid-area: header;
         }
 
@@ -212,12 +214,20 @@ else
         word-wrap: break-word;
         }
 
+        .email
+        {
+        max-width: 200px; 
+        white-space: normal;
+        word-wrap: break-word;
+        }
+
     /* iPad Air */
 @media (max-width:821px)  
 {
     header
     {
         margin-left:5px;
+        width:641px;
     }
    nav li a
    {
@@ -296,7 +306,7 @@ $serial = 1;
         <td class="attributes"><?php echo ++$key;?></td>
         <td class="attributes"><?php echo $row['id'];?></td>
             <td class="attributes"><?php echo $row['username'];?></td>
-            <td class="attributes"><?php echo $row['email'];?></td>
+            <td class="email"><?php echo $row['email'];?></td>
             <td class="attributes address-cell"><?php echo $row['address'];?></td>
             <td class="attributes"><?php echo $row['phoneno'];?></td>
             <td class="atrributes" id="actionbtns">

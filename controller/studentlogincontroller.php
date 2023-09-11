@@ -25,7 +25,7 @@
                 echo "<script>
                 alert('Congratulation!');
                 alert('Login Successful!!!');
-                   location.href='../student/enrollmentForm.php';
+                   location.href='../student/homepage.php';
                     </script>";
         }
         else

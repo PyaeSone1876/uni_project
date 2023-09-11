@@ -206,7 +206,7 @@ else
         text-align:center;
        }
 
-       .address-cell {
+       .description-cell {
         max-width: 240px; 
         white-space: normal;
         word-wrap: break-word;

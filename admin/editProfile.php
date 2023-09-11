@@ -129,8 +129,9 @@ body {
             padding: 10px;
             grid-area: footer;
         }
-  /* iPad Air */
- @media (max-width:821px)  
+
+        /* iPad Air */
+@media (max-width:821px)  
 {
     header
     {
@@ -152,8 +153,20 @@ body {
     width:150px;
    }
 
-   
+   .updateprofile-form
+   {
+    margin-left:95px;
+    height:900px;
+   }
+
+
+   form input[type='text']
+   {
+    margin-bottom:60px;
+   }
+
 }
+
     </style>
 </head>
 <body>

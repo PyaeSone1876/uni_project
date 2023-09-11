@@ -61,6 +61,8 @@ body
             cursor: pointer;
         }
 
+
+
         .enrollment-form button:hover {
             background-color:grey;
             cursor:pointer;
@@ -83,7 +85,16 @@ body
         }
 
 
-
+/* iPad Air */
+  @media (max-width:821px)  
+{
+   
+   .container
+   {
+    margin-bottom:470px;
+   }
+   
+}
 
     </style>
 </head>
@@ -120,7 +131,7 @@ body
             ?>     
             </select>
             <br><br>
-            <button name="enroll" value="submit" class="submitbtn">Enroll</button>
+            <button name="enroll" value="submit" class="submitbtn" onclick="return confirm('Are you sure to enroll?')">Enroll</button>
             
             <br><br>
         </form>

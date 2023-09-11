@@ -71,6 +71,27 @@ body
         width:50%;
        }
 
+  /* iPad Air */
+  @media (max-width:821px)  
+{
+    .courseimage img
+       {
+         width:400px;
+         height:400px; 
+         border-radius:15px; 
+       }
+   .product_info
+       {
+        width:430px;
+        margin-left:20px;
+       }
+    
+       .container
+       {
+        margin-bottom:395px;
+       }
+   
+}
 
 
     </style>

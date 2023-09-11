@@ -4,7 +4,9 @@ if (!isset($_SESSION)) {
 }
 
 ?>
+<style>
 
+</style>
     <nav>
         <ul>
         <li>

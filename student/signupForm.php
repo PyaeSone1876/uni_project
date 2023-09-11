@@ -11,12 +11,11 @@ body
 {
   background:wheat;
 }
+
 a
 {
   text-decoration:none;
-}
-
-.card
+}.card
 {
   background:skyblue;
   height:57rem;

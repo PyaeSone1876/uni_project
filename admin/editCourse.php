@@ -238,14 +238,7 @@ if (!isset($_SESSION['id'])) {
 
 
 }
-@media screen and (min-width: 1024px) {
-    header,
-    nav,
-    main,
-    footer {
-        padding: 30px;
-    }
-}
+
 
     </style>
 </head>
