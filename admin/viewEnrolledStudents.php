@@ -8,31 +8,10 @@ if (!isset($_SESSION['id'])) {
   header('location:loginform.php');
 }
 else
-{    
-
-include '../connection/connectionDB.php';
-
-$sql = "SELECT 
-c.name AS course_name,
-c.class AS class_name,
-e.id AS enrollment_id,
-e.enrollment_date,
-s.username AS student_name
-FROM 
-enrollment e
-JOIN 
-course c ON e.course_id = c.id
-JOIN 
-student s ON e.student_id = s.id;
-";
-
-$results = $conn->query($sql);
-// echo "Record" . $results->rowCount();
-$sname="";
-if(isset($_POST["btnsearch"]))
 {
-    $sname=$_POST['search'];
-    $sql= "SELECT 
+    include '../connection/connectionDB.php';
+
+    $sql = "SELECT 
     c.name AS course_name,
     c.class AS class_name,
     e.id AS enrollment_id,
@@ -43,10 +22,16 @@ if(isset($_POST["btnsearch"]))
     JOIN 
     course c ON e.course_id = c.id
     JOIN 
-    student s ON e.student_id = s.id where s.username like '%$sname%'";
+    student s ON e.student_id = s.id;
+    ";
+    $results = $conn->query($sql);
+    $sname="";
+    if(isset($_POST["btnsearch"]))
+{
+    $scourse=$_POST['search'];
+    $sql="SELECT * FROM student where name like '%$sname%'";
     $results= $conn->query($sql);
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,11 +40,11 @@ if(isset($_POST["btnsearch"]))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enrolled Students</title>
     <style>
-#enrolledstudent-tbl {
+    #enrollment-tbl {
     width: 100%;
     text-align: center;
-    
-}
+    }
+
     a
     {
         text-decoration:none;
@@ -82,10 +67,7 @@ if(isset($_POST["btnsearch"]))
         header {
             background-color: #333;
             color: #fff;
-            width:640px;
-            padding-top: 10px;
-            padding-bottom:10px;
-            padding-left:10px;
+            padding: 10px;
             grid-area: header;
         }
 
@@ -188,11 +170,23 @@ if(isset($_POST["btnsearch"]))
             display:flex;
         }
 
-        #makeenrollmentbutton,#exportbutton
+       
+       #exportbutton
         {
             border-radius:5px;
             margin-left:5px;
             width:5rem;
+            height:1.5rem;
+            border:none;
+            color:white;
+            background:black;
+        }
+
+        #makeenrollmentbutton
+        {
+            border-radius:5px;
+            margin-left:5px;
+            width:8rem;
             height:1.5rem;
             border:none;
             color:white;
@@ -206,10 +200,6 @@ if(isset($_POST["btnsearch"]))
             background:white;
         }
 
-        #makeenrollmentbutton
-        {
-            width:115px;
-        }
 
 
         #buttons
@@ -236,18 +226,19 @@ if(isset($_POST["btnsearch"]))
         text-align:center;
        }
 
-       .address-cell {
-        max-width: 300px; 
+       .description-cell {
+        max-width: 240px; 
         white-space: normal;
         word-wrap: break-word;
         }
 
- /* iPad Air */
+       /* iPad Air */
  @media (max-width:821px)  
 {
     header
     {
         margin-left:5px;
+        width:641px;
     }
    nav li a
    {
@@ -267,37 +258,37 @@ if(isset($_POST["btnsearch"]))
 
    
 }
-
+        
     </style>
 </head>
 <body>
 <?php include 'navbar.php'?>
     <header>
-        <h1>Enrolled Students</h1>
+        <h1>Enrolled Student</h1>
     </header>
     <main>
-        <h2>Enrolled Student Information</h2>
+    <h2>Enrolled Student Information</h2>
     <div class="container">
-        <div class="row">
+    <div class="row">
         <div class="row">
             <div class="col-12">
                 <form method="post">
                 <div class="input-group">
-                        <input type="search" name="search" value="<?php echo $sname; ?>" class="search" placeholder="Search user name ....">
-
-                        <div class="input-group-append">
-                            <button class="buttons" type="submit" name="btnsearch" id="buttons">Search</button>
-                            <button class="buttons" type="submit" name="btnshowall" id="buttons">Show All</button>
-                        </div>
-                    </div>
-                    <br><br>
-                    <div class="input-group">
-                            <form method="post">
-                            <input id="makeenrollmentbutton" type="submit" name="makeenrollment" value="Make Enrollment">
-                            </form>
-                            <form action="" method="post">
-                            <input id="exportbutton" type="submit" name="export" Value="Export">
-                            </form>
+                <input type="search" name="search" value="<?php echo $sname; ?>" class="search" placeholder="Search student name ....">
+                <div class="input-group-append">
+                <button class="buttons" type="submit" name="btnsearch" id="buttons">Search</button>
+                <button class="buttons" type="submit" name="btnshowall" id="buttons">Show All</button>
+            </div>
+            </div>
+            <br><br>
+            <div class="input-group">
+          <form method="post">
+          <input id="makeenrollmentbutton" type="submit" name="makeenrollment" value="Make Enrollment">
+          </form>
+        
+           <form action="" method="post">
+           <input id="exportbutton" type="button" value="Export" onclick="printTable()">
+           </form>
                     </div>
                     <br>
                 </form>
@@ -306,7 +297,7 @@ if(isset($_POST["btnsearch"]))
         </div>
         </div>
         <div class="row">
-        <table class="enrolledstudent-tbl">
+    <table class="table table-stripped" id="enrollment-tbl">
         <tr>
             <th>No</th>
             <th>Enrollment ID</th>
@@ -315,15 +306,16 @@ if(isset($_POST["btnsearch"]))
             <th>Class Name</th>
             <th>Date</th>
         </tr>
+   
 <?php
-
 $serial = 1;
  foreach($conn->query($sql)as $key => $row)
  {
 ?>       
         <div class="table_value">
+          
         <tr>
-            <td class="attributes"><?php echo ++$key;?></td>
+        <td class="attributes"><?php echo ++$key;?></td>
             <td class="attributes"><?php echo $row['enrollment_id'];?></td>
             <td class="attributes"><?php echo $row['student_name'];?></td>
             <td class="attributes"><?php echo $row['course_name']?></td>
@@ -336,50 +328,27 @@ $serial = 1;
         ?>
 
     </table>
-        </div>
+    </div>
     </div>
     </main>
- 
 </body>
-
 </html>
+<script>
+function printTable() {
+    var printContents = document.getElementById("enrollment-tbl").outerHTML;
+    var originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    document.body.innerHTML = originalContents;
+}
+</script>
+
+
 <?php
 }
-
-if (isset($_POST['export'])) {
-    echo "exporting";
-
-    
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // CSV file path
-    $csvFilePath = '../csvfiles/Enrolled_Student.csv';
-
-    // Open the CSV file for writing
-    $csvFile = fopen($csvFilePath, 'w');
-
-    // Write the column headers to the CSV file
-    fputcsv($csvFile, array_keys($data[0]));
-    if ($csvFile === false) {
-        die("Failed to open CSV file for writing.");
-    }
-
-    // Write data rows to the CSV file
-    foreach ($data as $row) {
-        fputcsv($csvFile, $row);
-    }
-    fclose($csvFile);
-
-
-    echo "<script>
-        alert('CSV file has been successfully exported.');
-        location.href = '../admin/viewEnrolledStudents.php';
-        </script>";
-}
-// Close the CSV file
-
 
 if (isset($_POST['makeenrollment'])) {
     echo "

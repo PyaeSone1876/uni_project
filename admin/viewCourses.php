@@ -218,6 +218,7 @@ else
     header
     {
         margin-left:5px;
+        width:641px;
     }
    nav li a
    {
@@ -259,14 +260,15 @@ else
                 <button class="buttons" type="submit" name="btnshowall" id="buttons">Show All</button>
             </div>
             </div>
-                    <br><br>
-                    <div class="input-group">
-                            <form method="post">
-                            <input id="registercoursebutton" type="submit" name="registercourse" value="Register Course">
-                            </form>
-                            <form action="" method="post">
-                            <input id="exportbutton" type="submit" name="export" Value="Export">
-                            </form>
+            <br><br>
+            <div class="input-group">
+          <form method="post">
+          <input id="registercoursebutton" type="submit" name="registercourse" value="Register Course">
+          </form>
+        
+           <form action="" method="post">
+           <input id="exportbutton" type="button" value="Export" onclick="printTable()">
+           </form>
                     </div>
                     <br>
                 </form>
@@ -317,43 +319,25 @@ $serial = 1;
     </main>
 </body>
 </html>
+<script>
+function printTable() {
+    var printContents = document.getElementById("student-tbl").outerHTML;
+    var originalContents = document.body.innerHTML;
+
+    // Remove the action column from the printed content
+    printContents = printContents.replace(/<th>Action<\/th>|<td class="atrributes" id="actionbtns">[\s\S]*?<\/td>/g, '');
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    document.body.innerHTML = originalContents;
+}
+</script>
+
+
 <?php
 }
-
-if (isset($_POST['export'])) {
-    echo "exporting";
-
-    
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // CSV file path
-    $csvFilePath = '../csvfiles/Courses.csv';
-
-    // Open the CSV file for writing
-    $csvFile = fopen($csvFilePath, 'w');
-
-    // Write the column headers to the CSV file
-    fputcsv($csvFile, array_keys($data[0]));
-    if ($csvFile === false) {
-        die("Failed to open CSV file for writing.");
-    }
-
-    // Write data rows to the CSV file
-    foreach ($data as $row) {
-        fputcsv($csvFile, $row);
-    }
-    fclose($csvFile);
-
-
-    echo "<script>
-        alert('CSV file has been successfully exported.');
-        location.href = '../admin/viewCourses.php';
-        </script>";
-}
-// Close the CSV file
-
 
 if (isset($_POST['registercourse'])) {
     echo "
