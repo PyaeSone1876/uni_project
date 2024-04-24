@@ -1,257 +1,252 @@
-
 <?php
 if (!isset($_SESSION)) {
     session_start();
 }
 if (!isset($_SESSION['id'])) {
-    header('location: loginform.php');
+    header('location: loginForm.php');
+    exit();
 } else {
-    include '../connection/connectionDB.php';
-$sql="SELECT enrollment_year, COUNT(id) AS enrollment_count
-FROM enrollment
-GROUP BY enrollment_year";
- foreach($conn->query($sql)as $data)
- {
-    $year[]=$data['enrollment_year'];
-    $quantity[]=$data['enrollment_count'];
+    include "../connection/connectionDB.php";
+    $sql="SELECT year, COUNT(id) AS idea_count
+    FROM ideas
+    GROUP BY year";
+    foreach($conn->query($sql)as $data)
+    {
+        $year[]=$data['year'];
+        $quantity[]=$data['idea_count'];
+    }
 
-}
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-   
+    <title>Feed</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-      body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: grid;
-            grid-template-columns: 20% 80%;
-            grid-template-rows: auto 1fr auto;
-            grid-template-areas:
-                "nav header"
-                "nav main"
-                "nav footer";
-            min-height: 100vh;
-            background:wheat;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            grid-area: header;
-        }
-
-        .icon
-        {
-            color:black;
-        }
-
-        .username
-        {
-            padding:5px 10px 5px 10px;
-            float:right;
-            background:white;
-            border-radius:50px;
-
-        }
-
-        .card1,.card2,.card3,.card4
-        {
-            width:25%;
-            height:150px;
-            background:white;
-            color:black;
-            margin-left:5px;
-            margin-bottom:50px;
-            border-radius:25px;
-
-            
-        }
-
-        .cardcontainer
-        {
-            display:flex;
-            width:100%;
-            
-        }
-
-        .carddata
-        {
-            width:100%;
-            height:40px;
-            text-align:center;
-            margin-top:50px;
-            font-size:20px;
-        }
-
-        .text
-        {
-            margin-left:5px;
-        }
-
-        nav {
-            background-color: black;
-            padding: 10px;
-            grid-area: nav;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-
-        nav a:hover {
-            color: black;
-            background-color: white;
-        }
-
-        nav li {
-            margin: 5px 0;
-        }
-
-        main {
-            padding: 20px;
-            grid-area: main;
-            font-size: 16px; /* Default font size */
-        }
-        
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            grid-area: footer;
-        }
-
-        .chart
-        {
-            background:white;
-            border-radius:10px;
-        }
-
-       
- /* iPad Air */
- @media (max-width:821px)  
-{
-    header
-    {
-        margin-left:5px;
-    }
-   nav li a
-   {
-    font-size:15px;
-    margin-bottom:100px;
-   }
-
-   nav li 
-   {
-    margin-top:10px;
-   }
-   
-   nav 
-   {
-    width:150px;
-   }
-
-  
+body {
+    background: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    font-family: calibri;
+    background: white;
 }
 
+.card1,
+.card2,
+.card3,
+.card4 {
+    width: 23%;
+    height: 180px;
+    background: white;
+    color: black;
+    margin-left: 23px;
+    margin-bottom: 50px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 25px rgba(211, 211, 211, 0.9);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.cardcontainer {
+    display: flex;
+    width: 100%;
+}
+
+.carddata {
+    width: 100%;
+    height: 40px;
+    margin-top: 50px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.chart {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px rgba(211, 211, 211, 0.9);
+}
+
+.number_head {}
+
+.chart_head {
+    text-align: center;
+    margin-bottom: 26px;
+    margin: 48px 0px;
+}
+
+.number_head {
+    text-align: center;
+    margin: 50px 0px;
+    margin-top: 50px;
+    margin-top: 70px;
+}
+
+
+/* iPad Air */
+
+@media (max-width: 820px) {
+    .container {
+        margin-bottom: 300px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .cardcontainer {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .card1,
+    .card2,
+    .card3,
+    .card4 {
+        width: 35%;
+    }
+}
+
+@media (max-width: 650px) {
+    .card1,
+    .card2,
+    .card3,
+    .card4 {
+        width: 46%;
+    }
+}
+
+@media (max-width: 590px) {
+    .card1,
+    .card2,
+    .card3,
+    .card4 {
+        width: 82%;
+    }
+}
     </style>
 </head>
 <body>
-    <?php include 'navbar.php'; ?>
-    <header>
-        <h1>Admin Dashboard</h1>
-    </header>
-   
-    <main>
-    <div class="username"><i class="fa-solid fa-user icon"></i><span class="text"><?php echo $_SESSION["username"]?></span></div>
-    <br><br>
-        <h2>Welcome to the Admin Dashboard</h2>
+<?php $_SESSION["location"]="dashboard
+            ";include 'navbar.php' ?>    
+
+<div class="container">
+<h1 class="number_head">Quantity of ideas per department</h1>
 <div class="cardcontainer">
+<div class="card1">
 <?php
-      $sql1="SELECT count(*) as total_admin from admin";
-      $strnt1 = $conn->query($sql1);
-      $fetch1 = $strnt1->fetch();
+$sql = "SELECT COUNT(DISTINCT ideas.id) AS ITDept_ideas
+FROM ideas
+JOIN (
+    SELECT id, department FROM admin
+    UNION ALL
+    SELECT id, department FROM qamanager
+    UNION ALL
+    SELECT id, department FROM staff
+    UNION ALL
+    SELECT id, department FROM qacoordinator
+) AS users ON ideas.uid = users.id
+WHERE users.department = 'IT Department';
+";
+$strnt = $conn->query($sql);
+$fetch = $strnt->fetch();
     ?>
-        <div class="card1">
+       
         <div class="carddata">
-        <?php echo $fetch1['total_admin']?>
-        <i class="fa-solid fa-screwdriver-wrench box-icon"></i>
+        <strong><span style="color:red">"<?php echo $fetch['ITDept_ideas']?>"</span></strong>
+       
         <br><br>
-        Administrators
+        Quantity of ideas from <br><strong>'IT Department'</strong>
         </div>
-        </div>
-
-        <?php
-      $sql2="SELECT count(*) as total_student from student";
-      $strnt2 = $conn->query($sql2);
-      $fetch2 = $strnt2->fetch();
-    ?>
-        <div class="card2">
-        <div class="carddata">
-        <?php echo $fetch2['total_student']?>
-        <i class="fa-solid fa-user"></i>
-        <br><br>
-        Students
-        </div>
-        </div>
-
-        <?php
-      $sql3="SELECT count(*) as total_course from course";
-      $strnt3 = $conn->query($sql3);
-      $fetch3 = $strnt3->fetch();
-    ?>
-        <div class="card3">
-        <div class="carddata">
-        <?php echo $fetch3['total_course']?>
-        <i class="fa-solid fa-book"></i>
-        <br><br>
-        Courses
-        </div>
-        </div>
-
-        <?php
-      $sql4="SELECT count(*) as total_enrollment from enrollment";
-      $strnt4 = $conn->query($sql4);
-      $fetch4 = $strnt4->fetch();
-    ?>
-        <div class="card4">
-        <div class="carddata">
-        <?php echo $fetch4['total_enrollment']?>
-        <i class="fa-solid fa-rectangle-list"></i>
-        <br><br>
-        Enrollments
-        </div>
-        </div>
-        
-
 </div>
 
-<h2>Yealry Enrollment Bar Chart</h2>
-        <div class="chart">
+<div class="card2">
+<?php
+    $sql = "SELECT COUNT(DISTINCT ideas.id) AS StdDept_ideas
+    FROM ideas
+    JOIN (
+        SELECT id, department FROM admin
+        UNION ALL
+        SELECT id, department FROM qamanager
+        UNION ALL
+        SELECT id, department FROM staff
+        UNION ALL
+        SELECT id, department FROM qacoordinator
+    ) AS users ON ideas.uid = users.id
+    WHERE users.department = 'Student Department';
+    ";
+      $strnt = $conn->query($sql);
+      $fetch = $strnt->fetch();
+    ?>
+       
+        <div class="carddata">
+        <strong><span style="color:red">"<?php echo $fetch['StdDept_ideas']?>"</span></strong>
+      
+        <br><br>
+        Quantity of ideas from <br><strong>'Student Department'</strong>
+        </div>
+</div>
+
+<div class="card3">
+<?php
+      $sql = "SELECT COUNT(DISTINCT ideas.id) AS CusSerDept_ideas
+      FROM ideas
+      JOIN (
+          SELECT id, department FROM admin
+          UNION ALL
+          SELECT id, department FROM qamanager
+          UNION ALL
+          SELECT id, department FROM staff
+          UNION ALL
+          SELECT id, department FROM qacoordinator
+      ) AS users ON ideas.uid = users.id
+      WHERE users.department = 'Customer Service Department';
+      ";
+      $strnt = $conn->query($sql);
+      $fetch = $strnt->fetch();
+    ?>
+       
+        <div class="carddata">
+        <strong><span style="color:red">"<?php echo $fetch['CusSerDept_ideas']?>"</span></strong>
+      
+        <br><br>
+        Quantity of ideas from <br><strong>'Customer Service Department'</strong>
+        </div>
+</div>
+
+<div class="card4">
+<?php
+      $sql = "SELECT COUNT(DISTINCT ideas.id) AS FinanceDept_ideas
+      FROM ideas
+      JOIN (
+          SELECT id, department FROM admin
+          UNION ALL
+          SELECT id, department FROM qamanager
+          UNION ALL
+          SELECT id, department FROM staff
+          UNION ALL
+          SELECT id, department FROM qacoordinator
+      ) AS users ON ideas.uid = users.id
+      WHERE users.department = 'Finance Department';
+      ";
+      $strnt = $conn->query($sql);
+      $fetch = $strnt->fetch();
+    ?>
+       
+        <div class="carddata">
+        <strong><span style="color:red">"<?php echo $fetch['FinanceDept_ideas']?>"</span></strong>
+        
+        <br><br>
+        Quantity of ideas from <br><strong>'Finance Department'</strong>
+        </div>
+</div>
+</div>
+<h1 class="chart_head">Quantity of ideas per year</h1>
+<div class="chart">
             <div>
                 <canvas id="myChart"></canvas>
             </div>
@@ -264,15 +259,19 @@ GROUP BY enrollment_year";
   const data = {
     labels: labels,
     datasets: [{
-      label: 'Quantity of enrollment',
+      label: 'Quantity of idea',
       data: <?php echo json_encode($quantity) ?>,
-      backgroundColor: ['skyblue'],
-      borderWidth: 1
+      backgroundColor: 'transparent', // Set background color to transparent for line chart
+      borderColor: 'black', // Set border color to black
+      pointBackgroundColor: 'red', // Set point color to red
+      pointBorderColor: 'transparent', // Set point border color to transparent
+      pointRadius: 5, // Set point radius to increase the size of the points
+      pointBorderWidth: 0 // Set point border width to 0 to remove the border
     }]
   };
 
   const config = {
-    type: 'bar',
+    type: 'line',
     data: data,
     options: {
       scales: {
@@ -288,7 +287,12 @@ GROUP BY enrollment_year";
     config
   );
 </script>
-    </main>
+
+
+</div>
+<br><br>
+      
+    <?php include 'footer.php' ?>
 </body>
 </html>
 <?php

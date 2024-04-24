@@ -121,35 +121,12 @@
     border-radius: 30px;
    }
 
-   <?php if($_SESSION["location"]=="dashboard
-            "){?>
-    .dshD{
+   <?php if($_SESSION["location"]=="manageCat"){?>
+    .manageCatD{
         background:white;
         color:#0B2A54;
     }
    <?php }?>
-
-   <?php if($_SESSION["location"]=="mcd"){ ?>
-    .mcdD
-    {
-        background:white;
-        color:#0B2A54;
-    }
-   <?php } ?>
-
-   <?php if($_SESSION["location"]=="dashboard"){ ?>
-    .dshD{
-        background:white;
-        color:#0B2A54;
-    }
-   <?php } ?>
-
-   <?php if($_SESSION["location"]=="systemInfo"){ ?>
-    .sysInfoD{
-        background:white;
-        color:#0B2A54;
-    }
-   <?php } ?>
 
    <?php if($_SESSION["location"]=="feed"){ ?>
     .feedD{
@@ -221,12 +198,12 @@
         left: 447px;
     }
 
-    .feedBtn{
-        left: 614px;
+    .feedBtn {
+        left: 308px;
     }
 
-    .logoutBtn{
-        left: 686px;
+    .logoutBtn {
+        left: 370px;
     }
 
        .navbar
@@ -361,38 +338,14 @@
         <ul class="nav-links">
             <div class="bitems"><a href="homepage.php" class="navlogo"><i class="fa-brands fa-phoenix-framework logo"></i></a><p class="brand" class="btnLink">University System</p></div>
 
+            <li><a href="managecategory.php" class="btnLink dashBtn"
 
-            <li><a href="dashboard.php" class="btnLink dashBtn"
-
-            <?php if($_SESSION["location"]=="dashboard
-            "){?>
+            <?php if($_SESSION['location']=="manageCat"){?>
                 style="background:white;color:#0B2A54;";
             <?php
                 }?>
             
-            >Dashboard</a></li>
-
-
-            <li><a href="manageclosuredate.php" class="btnLink mcdBtn"
-
-            <?php if($_SESSION["location"]=="mcd"){?>
-                style="background:white;color:#0B2A54;";
-
-            <?php
-                }?>
-            
-            >Manage Closure Date</a></li>
-
-
-            <li><a href="systeminfo.php" class="btnLink systemInfoBtn"
-
-            <?php if($_SESSION["location"]=="systemInfo"){?>
-                style="background:white;color:#0B2A54;";
-
-            <?php
-                }?>
-            
-            >System Information</a></li>
+            >Manage Category</a></li>
 
 
             <li><a href="feed.php" class="btnLink feedBtn" 
@@ -428,14 +381,11 @@
              <div class="dropDownBar" id="dropDownBar"><i class="fa-solid fa-bars"></i></div>
 
              <div class="dropDown" id="dropDown" style="height:0px;">
-                    <li><a href="dashboard.php" class="LinkingBtn dshD">Dashboard</a></li>
-                    <li><a href="manageclosuredate.php" class="LinkingBtn mcdD">Manage Closure Date</a></li>
-                    <li><a href="systeminfo.php" class="LinkingBtn sysInfoD">System Information</a></li>
+                    <li><a href="managecategory.php" class="LinkingBtn manageCatD">Manage Category</a></li>
                     <li><a href="feed.php" class="LinkingBtn feedD">Feed</a></li>
                     <li><a href="../useroptions/userOptions.php" class="LinkingBtn logOutD">Log Out</a></li>
              </div>
              </div>
-             <!-- <div class="cross" id="cross"><i class="fa-solid fa-xmark"></i></div> -->
              <div class="username"><i class="fa-solid fa-user userIconNav"></i> <span class="text"><?php echo $_SESSION["username"]?></span></div>
 
 
@@ -454,7 +404,7 @@
 
         // Function to show the dropdown content and change the class of the dropdown bar icon
         function showDropDown() {
-            dropDown.style.height = '262px';
+            dropDown.style.height = '158px';
             dropDownBar.firstElementChild.classList.remove('fa-bars');
             dropDownBar.firstElementChild.classList.add('fa-xmark');
             dropDown.style.zIndex='6';
