@@ -4,22 +4,18 @@ the database name "webdb".
 For login
 ========
 "Admin User"
-************
 Email : admin123@gmail.com
 Password : 123
 
 "QA Manager"
-**************
 Email : qamanager123@gmail.com
 Password : 123
 
 "QA Coordinator"
-**************
 Email : qacoordinator123@gmail.com
 Password : 123
 
 "Staff"
-****
 Email : staff123@gmail.com
 Password : 555
 
