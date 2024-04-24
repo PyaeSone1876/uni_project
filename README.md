@@ -13,6 +13,11 @@ Password : 123
 Email : qamanager123@gmail.com
 Password : 123
 
+"QA Coordinator"
+**************
+Email : qacoordinator123@gmail.com
+Password : 123
+
 "Staff"
 ****
 Email : staff123@gmail.com
